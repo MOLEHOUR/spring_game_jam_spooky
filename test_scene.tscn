@@ -12,6 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_q7jbk")
 
 [sub_resource type="Environment" id="Environment_ia3g5"]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_4qdhk")
 
 [node name="Test Scene" type="Node3D"]
