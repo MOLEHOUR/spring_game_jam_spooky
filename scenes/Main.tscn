@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://lb486gfrykla"]
+
+[ext_resource type="PackedScene" uid="uid://cr0bewfktrt8g" path="res://scenes/enemy.tscn" id="1_b58hh"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_dsm65"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gi85a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ercu1"]
+sky_material = SubResource("ProceduralSkyMaterial_gi85a")
+
+[sub_resource type="Environment" id="Environment_qu0ix"]
+background_mode = 2
+sky = SubResource("Sky_ercu1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_avlde"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8evfh"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_dsm65")
+
+[node name="environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(-0.921185, -0.314808, 0.228721, 0, 0.587785, 0.809017, -0.389124, 0.745255, -0.541459, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
+environment = SubResource("Environment_qu0ix")
+
+[node name="enemy" parent="." instance=ExtResource("1_b58hh")]
+
+[node name="map" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="map"]
+transform = Transform3D(5.6, 0, 0, 0, 1, 0, 0, 0, 5.8, 0, 0, 0)
+mesh = SubResource("PlaneMesh_avlde")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="map/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8evfh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
