@@ -66,6 +66,25 @@ theme_override_font_sizes/normal_font_size = 50
 text = "  Keys:  "
 autowrap_mode = 0
 
+[node name="prompt label" type="RichTextLabel" parent="Camera3D/Flashlight/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 26.0
+offset_right = 250.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]Press [E] to pick up[/center]"
+scroll_active = false
+
 [node name="Flashlight Area" type="Area3D" parent="Camera3D/Flashlight"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Flashlight/Flashlight Area"]
