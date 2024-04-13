@@ -62,3 +62,6 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 stream = ExtResource("5_fhxx5")
 volume_db = -21.55
 autoplay = true
+
+[node name="nest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -5)
