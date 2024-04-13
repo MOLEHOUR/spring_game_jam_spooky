@@ -45,6 +45,9 @@ func _input(event: InputEvent):
 		is_paused = !is_paused
 	if Input.is_action_just_pressed("flashlight"):
 		flashlight.toggle_flashlight()
+	if event is InputEventKey:
+		if event.pressed && event.keycode == KEY_R:
+			flashlight.change_power(10.0)
 
 
 
