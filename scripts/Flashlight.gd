@@ -14,7 +14,7 @@ func _ready():
 	timer.start()
 
 func _process(_delta):
-	battery_label.text = (" Battery: " + str(round(timer.get_time_left())))
+	battery_label.text = (" Battery: " + str(round((round(timer.get_time_left())/max_power)*100)) + "%")
 
 func toggle_flashlight():
 	if has_power:

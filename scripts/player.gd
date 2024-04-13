@@ -1,11 +1,8 @@
 extends CharacterBody3D
 
-#@onready var camera = $Camera3D
-#var look_direction: Vector2
-#var camera_sens = 50
-
 @onready var flashlight = $Camera3D/Flashlight
 @onready var raycast = $Camera3D/RayCast3D
+@onready var key_label = $"Camera3D/Flashlight/UI/key label"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -18,6 +15,7 @@ var key_count: int = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	update_key_ui()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -56,7 +54,7 @@ func _input(event: InputEvent):
 					flashlight.change_power(item.power)
 				if item.is_key:
 					key_count += 1
-					print("Keys: " + str(key_count))
+					update_key_ui()
 				item.on_pickup()
 	
 	#For debugging
@@ -65,11 +63,5 @@ func _input(event: InputEvent):
 			flashlight.change_power(10.0)
 
 
-
-#func _rotate_camera(delta: float, sens_mod: float = 1.0):
-#	if !is_paused:
-#		var input = Input.get_vector("look_left","look_right","look_down","look_up")
-#		look_direction += input
-#		rotation.y -= look_direction.x * camera_sens * delta
-#		camera.rotation.x = clamp(camera.rotation.x - look_direction.y * camera_sens * sens_mod * delta,-1.5,1.5)
-#		look_direction = Vector2.ZERO
+func update_key_ui():
+	key_label.text = " Keys: " + str(key_count)
