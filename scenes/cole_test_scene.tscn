@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://chtv6bos3qafy"]
+
+[ext_resource type="PackedScene" uid="uid://cr0bewfktrt8g" path="res://scenes/enemy.tscn" id="1_8ys0x"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_c25cg"]
+[ext_resource type="PackedScene" uid="uid://cxmag8kpcuopg" path="res://scenes/player.tscn" id="2_n3eva"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_npgwn"]
+vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_psohw"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2j0e7"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="ColeTestScene" type="Node3D"]
+script = ExtResource("1_c25cg")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_npgwn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_psohw")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2j0e7")
+
+[node name="enemy" parent="." instance=ExtResource("1_8ys0x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Player" parent="." instance=ExtResource("2_n3eva")]
