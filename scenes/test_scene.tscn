@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfc8gk0peifx1"]
+[gd_scene load_steps=8 format=3 uid="uid://bfc8gk0peifx1"]
 
 [ext_resource type="PackedScene" uid="uid://pwlw0a1jee75" path="res://scenes/player.tscn" id="1_4tvk2"]
-[ext_resource type="PackedScene" uid="uid://ds4bxv3rag7bl" path="res://scenes/item_pickup.tscn" id="2_ibryl"]
-[ext_resource type="Texture2D" uid="uid://cj1u646t0l04t" path="res://battery.png" id="3_x3pc8"]
-[ext_resource type="Texture2D" uid="uid://ddic4d4s52es4" path="res://key.png" id="4_wexko"]
+[ext_resource type="PackedScene" uid="uid://bj0nupe3jxs1t" path="res://scenes/battery_pickup.tscn" id="2_jf8rc"]
+[ext_resource type="PackedScene" uid="uid://fc57vmpwvxq3" path="res://scenes/key_pickup.tscn" id="3_y7r4q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr1wn"]
 albedo_color = Color(0.215686, 0.215686, 0.215686, 1)
@@ -21,36 +20,37 @@ sky = SubResource("Sky_4qdhk")
 [node name="Test Scene" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 size = Vector3(30, 1, 30)
 material = SubResource("StandardMaterial3D_pr1wn")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 5.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 6, 0)
 use_collision = true
 size = Vector3(1, 10, 30)
 material = SubResource("StandardMaterial3D_pr1wn")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 6, 0)
 use_collision = true
 size = Vector3(1, 10, 30)
 material = SubResource("StandardMaterial3D_pr1wn")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5.5, -15.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6, -15.5)
 use_collision = true
 size = Vector3(1, 10, 30)
 material = SubResource("StandardMaterial3D_pr1wn")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5.5, 15.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 6, 15.5)
 use_collision = true
 size = Vector3(1, 10, 30)
 material = SubResource("StandardMaterial3D_pr1wn")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
 use_collision = true
 size = Vector3(30, 1, 30)
 material = SubResource("StandardMaterial3D_pr1wn")
@@ -61,26 +61,20 @@ environment = SubResource("Environment_ia3g5")
 [node name="Player" parent="." instance=ExtResource("1_4tvk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Item_Pickup" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8)
-texture = ExtResource("3_x3pc8")
+[node name="Battery_Pickup" parent="." instance=ExtResource("2_jf8rc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.955712, 2.5, -7.54579)
 
-[node name="Item_Pickup2" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8477, 2, -7.96137)
-power = 20.0
-texture = ExtResource("3_x3pc8")
+[node name="Battery_Pickup2" parent="." instance=ExtResource("2_jf8rc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17336, 2.5, -10.1963)
 
-[node name="Item_Pickup3" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95529, 2, -6.31205)
-texture = ExtResource("3_x3pc8")
+[node name="Battery_Pickup3" parent="." instance=ExtResource("2_jf8rc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76147, 2.5, -10.7542)
 
-[node name="Item_Pickup4" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41262, 2, -2.70488)
-power = 50.0
-texture = ExtResource("3_x3pc8")
+[node name="Key_Pickup" parent="." instance=ExtResource("3_y7r4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.60323, 2.5, -9.08546)
 
-[node name="Item_Pickup5" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79205, 2, 0.530642)
-power = 0.0
-is_key = true
-texture = ExtResource("4_wexko")
+[node name="Key_Pickup2" parent="." instance=ExtResource("3_y7r4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1421, 2.5, -5.7975)
+
+[node name="Key_Pickup3" parent="." instance=ExtResource("3_y7r4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4791, 2.5, -9.49508)

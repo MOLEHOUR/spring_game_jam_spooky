@@ -14,6 +14,9 @@ var is_paused: bool = false
 
 var key_count: int = 0
 
+signal enemy_entered
+signal enemy_exited
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	update_key_ui()
@@ -66,3 +69,11 @@ func _input(event: InputEvent):
 
 func update_key_ui():
 	key_label.text = " Keys: " + str(key_count)
+
+func _on_flashlight_area_body_entered(body):
+	if body.is_in_group("enemy"):
+		enemy_entered.emit()
+
+func _on_flashlight_area_body_exited(body):
+	if body.is_in_group("enemy"):
+		enemy_exited.emit()
