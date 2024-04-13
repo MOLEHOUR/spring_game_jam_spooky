@@ -78,3 +78,5 @@ collision_mask = 2
 collide_with_areas = true
 
 [connection signal="timeout" from="Camera3D/Flashlight/Timer" to="Camera3D/Flashlight" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Camera3D/Flashlight/Flashlight Area" to="." method="_on_flashlight_area_body_entered"]
+[connection signal="body_exited" from="Camera3D/Flashlight/Flashlight Area" to="." method="_on_flashlight_area_body_exited"]
