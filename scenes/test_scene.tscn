@@ -61,14 +61,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Item_Pickup" parent="." instance=ExtResource("2_ibryl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8)
+texture = null
 
 [node name="Item_Pickup2" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8477, 2.5, -7.96137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8477, 2, -7.96137)
 power = 20.0
 
 [node name="Item_Pickup3" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95529, 2.5, -6.31205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95529, 2, -6.31205)
 
 [node name="Item_Pickup4" parent="." instance=ExtResource("2_ibryl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41262, 2.5, -2.70488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41262, 2, -2.70488)
 power = 50.0
+
+[node name="Item_Pickup5" parent="." instance=ExtResource("2_ibryl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79205, 2, 0.530642)
+power = 0.0
+is_key = true

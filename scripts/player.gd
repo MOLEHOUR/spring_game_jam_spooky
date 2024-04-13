@@ -14,6 +14,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var is_paused: bool = false
 
+var key_count: int = 0
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -52,6 +54,9 @@ func _input(event: InputEvent):
 				var item = raycast.get_collider()
 				if item.power > 0:
 					flashlight.change_power(item.power)
+				if item.is_key:
+					key_count += 1
+					print("Keys: " + str(key_count))
 				item.on_pickup()
 	
 	#For debugging

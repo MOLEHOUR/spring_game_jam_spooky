@@ -9,6 +9,8 @@ size = Vector3(0.5, 3, 0.5)
 [node name="Item_Pickup" type="Area3D" groups=["Item"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_81pp1")
+texture = ExtResource("1_ojfbi")
+default_texture = ExtResource("1_ojfbi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ecuqq")
