@@ -50,4 +50,7 @@ theme_override_font_sizes/normal_font_size = 50
 text = "  Battery: "
 autowrap_mode = 0
 
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -3)
+
 [connection signal="timeout" from="Camera3D/Flashlight/Timer" to="Camera3D/Flashlight" method="_on_timer_timeout"]

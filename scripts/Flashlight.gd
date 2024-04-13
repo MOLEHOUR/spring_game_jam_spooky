@@ -6,11 +6,11 @@ extends Node3D
 
 var on: bool = true
 var has_power: bool = true
-var default_energy: float = 10.0
-var max_energy: float = 20.0
+var default_light_energy: float = 10.0
+var max_power: float = 500.0
 
 func _ready():
-	timer.set_wait_time(max_energy)
+	timer.set_wait_time(max_power)
 	timer.start()
 
 func _process(_delta):
@@ -22,23 +22,23 @@ func toggle_flashlight():
 			light.light_energy = 0
 			timer.set_paused(true)
 		else:
-			light.light_energy = default_energy
+			light.light_energy = default_light_energy
 			timer.set_paused(false)
 		on = !on
 	else:
-		print("out of battery!")
+		#Ran out of power!
+		pass
 
 func change_power(power: float):
 	var current_time = timer.get_time_left()
-	if ((current_time + power) > max_energy):
-		timer.set_wait_time(max_energy)
+	if ((current_time + power) > max_power):
+		timer.set_wait_time(max_power)
 	elif ((current_time + power) < 0):
 		timer.set_wait_time(1)
 	else:
 		timer.set_wait_time(current_time+power)
 	
 	timer.start()
-	print(timer.get_time_left())
 	
 	if !has_power && power > 0:
 		regain_power()
@@ -47,7 +47,6 @@ func _on_timer_timeout():
 	has_power = false
 	on = false
 	light.light_energy = 0
-	print("ran out of battery")
 
 func regain_power():
 	has_power = true
