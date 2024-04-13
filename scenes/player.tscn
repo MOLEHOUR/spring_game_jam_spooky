@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://pwlw0a1jee75"]
+[gd_scene load_steps=6 format=3 uid="uid://pwlw0a1jee75"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vdvyh"]
 [ext_resource type="Script" path="res://scripts/Flashlight.gd" id="2_um6g3"]
+[ext_resource type="Script" path="res://scripts/Pause Menu.gd" id="3_gwaw3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3mjd"]
 
@@ -96,6 +97,89 @@ target_position = Vector3(0, 0, -3)
 collision_mask = 2
 collide_with_areas = true
 
+[node name="Pause Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_gwaw3")
+
+[node name="ColorRect" type="ColorRect" parent="Pause Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="Paused Text" type="RichTextLabel" parent="Pause Menu"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -265.0
+offset_right = 250.0
+offset_bottom = -215.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[center][b]PAUSED[/b][/center]"
+scroll_active = false
+
+[node name="Resume Text" type="RichTextLabel" parent="Pause Menu"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -215.0
+offset_right = 250.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Press [Escape] to Resume[/center]"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -400.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Restart" type="Button" parent="Pause Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="Pause Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Quit to Main Menu"
+
 [connection signal="timeout" from="Camera3D/Flashlight/Timer" to="Camera3D/Flashlight" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Camera3D/Flashlight/Flashlight Area" to="." method="_on_flashlight_area_body_entered"]
 [connection signal="body_exited" from="Camera3D/Flashlight/Flashlight Area" to="." method="_on_flashlight_area_body_exited"]
+[connection signal="button_down" from="Pause Menu/VBoxContainer/Restart" to="Pause Menu" method="_on_restart_button_down"]
+[connection signal="button_down" from="Pause Menu/VBoxContainer/Quit" to="Pause Menu" method="_on_quit_button_down"]
