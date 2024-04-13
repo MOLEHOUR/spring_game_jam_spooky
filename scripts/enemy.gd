@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
+@onready var collision_shape_3d = $CollisionShape3D
 
 var SPEED = 3.0
 
@@ -12,6 +13,11 @@ func _physics_process(_delta):
 	velocity = new_velocity
 	move_and_slide()
 	nav_agent.set_velocity(new_velocity)
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().name == "Player":
+			print_debug("ouch")
+
 	
 #gets target location	
 func update_target_location(target_location):
@@ -25,7 +31,6 @@ func _on_navigation_agent_3d_target_reached():
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	velocity = velocity.move_toward(safe_velocity, .25)
 	move_and_slide()
-	
 	
 func _ready():
 	set_physics_process(false)
