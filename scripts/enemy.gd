@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "Player":
-			get_tree().change_scene_to_file("res://scenes/cole_test_scene.tscn")
+			get_tree().change_scene_to_file("res://scenes/win.tscn")
 #gets target location	
 func update_target_location(player, nest):
 	_player = player
