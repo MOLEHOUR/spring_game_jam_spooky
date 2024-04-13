@@ -52,6 +52,7 @@ func _input(event: InputEvent):
 				var item = raycast.get_collider()
 				if item.power > 0:
 					flashlight.change_power(item.power)
+				item.on_pickup()
 	
 	#For debugging
 	if event is InputEventKey:
