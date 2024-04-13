@@ -1,14 +1,15 @@
 extends CharacterBody3D
 
 #@onready var camera = $Camera3D
+#var look_direction: Vector2
+#var camera_sens = 50
+
+@onready var flashlight = $Camera3D/Flashlight
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-#var look_direction: Vector2
-#var camera_sens = 50
 
 var is_paused: bool = false
 
@@ -19,8 +20,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	var input_dir = Input.get_vector("", "", "forward", "backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	var direction = (transform.basis * Vector3(0, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -34,7 +35,6 @@ func _physics_process(delta):
 		rotation.y -= 4.0 * delta
 
 	move_and_slide()
-	#_rotate_camera(delta)
 
 func _input(event: InputEvent):
 	if Input.is_action_just_pressed("pause"):
@@ -43,6 +43,10 @@ func _input(event: InputEvent):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		is_paused = !is_paused
+	if Input.is_action_just_pressed("flashlight"):
+		flashlight.toggle_flashlight()
+
+
 
 #func _rotate_camera(delta: float, sens_mod: float = 1.0):
 #	if !is_paused:
