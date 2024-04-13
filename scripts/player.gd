@@ -5,6 +5,7 @@ extends CharacterBody3D
 #var camera_sens = 50
 
 @onready var flashlight = $Camera3D/Flashlight
+@onready var raycast = $Camera3D/RayCast3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -12,6 +13,8 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var is_paused: bool = false
+
+var key_count: int = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -45,6 +48,21 @@ func _input(event: InputEvent):
 		is_paused = !is_paused
 	if Input.is_action_just_pressed("flashlight"):
 		flashlight.toggle_flashlight()
+	if Input.is_action_just_pressed("interact"):
+		if raycast.is_colliding():
+			if raycast.get_collider().is_in_group("Item"):
+				var item = raycast.get_collider()
+				if item.power > 0:
+					flashlight.change_power(item.power)
+				if item.is_key:
+					key_count += 1
+					print("Keys: " + str(key_count))
+				item.on_pickup()
+	
+	#For debugging
+	if event is InputEventKey:
+		if event.pressed && event.keycode == KEY_R:
+			flashlight.change_power(10.0)
 
 
 
