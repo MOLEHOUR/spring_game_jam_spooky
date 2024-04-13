@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://chd23eevokc2y"]
+[gd_scene load_steps=5 format=3 uid="uid://chd23eevokc2y"]
 
 [ext_resource type="PackedScene" uid="uid://cr0bewfktrt8g" path="res://scenes/enemy.tscn" id="1_8ys0x"]
-[ext_resource type="PackedScene" uid="uid://bujhatwrmt4cy" path="res://player.tscn" id="2_1ssp3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_664rf"]
 
@@ -29,6 +28,3 @@ shape = SubResource("ConcavePolygonShape3D_2j0e7")
 
 [node name="enemy" parent="." instance=ExtResource("1_8ys0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-
-[node name="Player" parent="." instance=ExtResource("2_1ssp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00150776, 0.987724, 8.02687)
