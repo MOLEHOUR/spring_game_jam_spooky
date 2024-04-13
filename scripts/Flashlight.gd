@@ -22,6 +22,9 @@ func toggle_flashlight():
 	else:
 		print("out of battery!")
 
+func change_power(power: float):
+	pass
+
 func _on_timer_timeout():
 	has_power = false
 	on = false
