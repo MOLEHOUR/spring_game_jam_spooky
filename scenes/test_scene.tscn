@@ -1,9 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfc8gk0peifx1"]
 
+
 [ext_resource type="PackedScene" uid="uid://pwlw0a1jee75" path="res://scenes/player.tscn" id="1_4tvk2"]
 [ext_resource type="PackedScene" uid="uid://ds4bxv3rag7bl" path="res://scenes/item_pickup.tscn" id="2_ibryl"]
 [ext_resource type="Texture2D" uid="uid://cj1u646t0l04t" path="res://battery.png" id="3_x3pc8"]
 [ext_resource type="Texture2D" uid="uid://ddic4d4s52es4" path="res://key.png" id="4_wexko"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr1wn"]
 albedo_color = Color(0.215686, 0.215686, 0.215686, 1)
