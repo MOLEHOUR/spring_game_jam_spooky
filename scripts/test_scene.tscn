@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dut611lt7w6fj"]
+
+[ext_resource type="PackedScene" uid="uid://cxmag8kpcuopg" path="res://scenes/player.tscn" id="1_ai5p2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr1wn"]
+albedo_color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q7jbk"]
+
+[sub_resource type="Sky" id="Sky_4qdhk"]
+sky_material = SubResource("ProceduralSkyMaterial_q7jbk")
+
+[sub_resource type="Environment" id="Environment_ia3g5"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_4qdhk")
+
+[node name="Test Scene" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(30, 1, 30)
+material = SubResource("StandardMaterial3D_pr1wn")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 5.5, 0)
+use_collision = true
+size = Vector3(1, 10, 30)
+material = SubResource("StandardMaterial3D_pr1wn")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5.5, 0)
+use_collision = true
+size = Vector3(1, 10, 30)
+material = SubResource("StandardMaterial3D_pr1wn")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5.5, -15.5)
+use_collision = true
+size = Vector3(1, 10, 30)
+material = SubResource("StandardMaterial3D_pr1wn")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5.5, 15.5)
+use_collision = true
+size = Vector3(1, 10, 30)
+material = SubResource("StandardMaterial3D_pr1wn")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+use_collision = true
+size = Vector3(30, 1, 30)
+material = SubResource("StandardMaterial3D_pr1wn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ia3g5")
+
+[node name="Player" parent="." instance=ExtResource("1_ai5p2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
