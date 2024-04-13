@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfc8gk0peifx1"]
+[gd_scene load_steps=9 format=3 uid="uid://bfc8gk0peifx1"]
 
 [ext_resource type="PackedScene" uid="uid://pwlw0a1jee75" path="res://scenes/player.tscn" id="1_4tvk2"]
 [ext_resource type="PackedScene" uid="uid://ds4bxv3rag7bl" path="res://scenes/item_pickup.tscn" id="2_ibryl"]
-[ext_resource type="Texture2D" uid="uid://dww1yc8l0ueoe" path="res://sill.jpg" id="3_mw1n5"]
+[ext_resource type="Texture2D" uid="uid://cj1u646t0l04t" path="res://battery.png" id="3_x3pc8"]
+[ext_resource type="Texture2D" uid="uid://ddic4d4s52es4" path="res://key.png" id="4_wexko"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr1wn"]
 albedo_color = Color(0.215686, 0.215686, 0.215686, 1)
@@ -62,23 +63,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Item_Pickup" parent="." instance=ExtResource("2_ibryl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8)
-texture = ExtResource("3_mw1n5")
+texture = ExtResource("3_x3pc8")
 
 [node name="Item_Pickup2" parent="." instance=ExtResource("2_ibryl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8477, 2, -7.96137)
 power = 20.0
-texture = ExtResource("3_mw1n5")
+texture = ExtResource("3_x3pc8")
 
 [node name="Item_Pickup3" parent="." instance=ExtResource("2_ibryl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95529, 2, -6.31205)
-texture = ExtResource("3_mw1n5")
+texture = ExtResource("3_x3pc8")
 
 [node name="Item_Pickup4" parent="." instance=ExtResource("2_ibryl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41262, 2, -2.70488)
 power = 50.0
-texture = ExtResource("3_mw1n5")
+texture = ExtResource("3_x3pc8")
 
 [node name="Item_Pickup5" parent="." instance=ExtResource("2_ibryl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79205, 2, 0.530642)
 power = 0.0
 is_key = true
+texture = ExtResource("4_wexko")
