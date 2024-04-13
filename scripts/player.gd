@@ -60,6 +60,12 @@ func _input(event: InputEvent):
 					key_count += 1
 					update_key_ui()
 				item.on_pickup()
+			elif raycast.get_collider().is_in_group("Door"):
+				var door = raycast.get_collider()
+				if key_count >= door.keys_required:
+					door.unlock()
+				else:
+					print("need more keys!")
 	
 	#For debugging
 	if event is InputEventKey:
