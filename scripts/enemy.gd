@@ -2,9 +2,10 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var collision_shape_3d = $CollisionShape3D
-@onready var nest = $"../nest"
 
+var _nest = null
 var _player = null
+var _flashlightArea = false
 var new_velocity
 var SPEED = 3.0
 
@@ -13,9 +14,9 @@ func _physics_process(_delta):
 	var next_location = nav_agent.get_next_path_position()
 	new_velocity = (next_location - current_location).normalized() * SPEED
 	if _player.flashlight.on == true:
-		new_velocity = (next_location + current_location).normalized() * SPEED
+		nav_agent.target_position = _nest.global_transform.origin
 	else:
-		new_velocity = (next_location - current_location).normalized() * SPEED
+		nav_agent.target_position = _player.global_transform.origin
 	#look_at(Vector3(nav_agent.target_position.global_position.x, global_position.y, nav_agent.target_position.global_position.z), Vector3.UP)
 	velocity = new_velocity
 	move_and_slide()
@@ -24,20 +25,13 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "Player":
 			get_tree().change_scene_to_file("res://scenes/cole_test_scene.tscn")
-	
 #gets target location	
-func update_target_location(player):
-	nav_agent.target_position = player.global_transform.origin
+func update_target_location(player, nest):
 	_player = player
+	_nest = nest
 	#print_debug(nav_agent.target_position)
 
 #pipeline for interactions
-func _on_navigation_agent_3d_target_reached():
-	print("in range")
-	
-func _on_navigation_agent_3d_velocity_computed(safe_velocity):
-	velocity = velocity.move_toward(safe_velocity, .25)
-	move_and_slide()
 	
 func _ready():
 	set_physics_process(false)

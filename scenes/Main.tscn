@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://lb486gfrykla"]
+[gd_scene load_steps=7 format=3 uid="uid://lb486gfrykla"]
 
-[ext_resource type="PackedScene" uid="uid://cr0bewfktrt8g" path="res://scenes/enemy.tscn" id="1_b58hh"]
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_dsm65"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gi85a"]
@@ -32,8 +31,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
 environment = SubResource("Environment_qu0ix")
-
-[node name="enemy" parent="." instance=ExtResource("1_b58hh")]
 
 [node name="map" type="Node" parent="."]
 
