@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var flashlight = $Camera3D/Flashlight
 @onready var raycast = $Camera3D/RayCast3D
 @onready var key_label = $"Camera3D/Flashlight/UI/key label"
+@onready var flashlight_area = $"Camera3D/Flashlight/Flashlight Area"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
