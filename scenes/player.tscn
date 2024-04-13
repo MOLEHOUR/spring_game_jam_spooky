@@ -32,3 +32,5 @@ spot_angle = 30.0
 [node name="Timer" type="Timer" parent="Camera3D/Flashlight"]
 wait_time = 60.0
 one_shot = true
+
+[connection signal="timeout" from="Camera3D/Flashlight/Timer" to="Camera3D/Flashlight" method="_on_timer_timeout"]
