@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds4bxv3rag7bl"]
+
+[ext_resource type="Script" path="res://scripts/item_pickup.gd" id="1_81pp1"]
+[ext_resource type="Texture2D" uid="uid://plbqk65qemey" path="res://icon.svg" id="1_ojfbi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecuqq"]
+size = Vector3(0.5, 3, 0.5)
+
+[node name="Item_Pickup" type="Area3D" groups=["Item"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_81pp1")
+texture = ExtResource("1_ojfbi")
+default_texture = ExtResource("1_ojfbi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ecuqq")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_ojfbi")
