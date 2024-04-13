@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var raycast = $Camera3D/RayCast3D
 @onready var key_label = $"Camera3D/Flashlight/UI/key label"
 @onready var flashlight_area = $"Camera3D/Flashlight/Flashlight Area"
+@onready var prompt_label = $"Camera3D/Flashlight/UI/prompt label"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -20,6 +21,7 @@ signal enemy_exited
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	update_key_ui()
+	prompt_label.text = " "
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -40,6 +42,20 @@ func _physics_process(delta):
 		rotation.y -= 4.0 * delta
 
 	move_and_slide()
+	
+	if raycast.is_colliding():
+		if raycast.get_collider() == null:
+			pass
+		else:
+			if raycast.get_collider().is_in_group("Item"):
+				prompt_label.text = "[center]Press [E] to pick up[/center]"
+			elif raycast.get_collider().is_in_group("Door"):
+				if raycast.get_collider().keys_required > key_count:
+					prompt_label.text = "[center]Not enough keys![/center]"
+				else:
+					prompt_label.text = "[center]Press [E] to enter[/center]"
+	else:
+		prompt_label.text = " "
 
 func _input(event: InputEvent):
 	if Input.is_action_just_pressed("pause"):
@@ -60,6 +76,12 @@ func _input(event: InputEvent):
 					key_count += 1
 					update_key_ui()
 				item.on_pickup()
+			elif raycast.get_collider().is_in_group("Door"):
+				var door = raycast.get_collider()
+				if key_count >= door.keys_required:
+					door.unlock()
+				else:
+					print("need more keys!")
 	
 	#For debugging
 	if event is InputEventKey:

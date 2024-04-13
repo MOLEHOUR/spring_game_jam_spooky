@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfc8gk0peifx1"]
+[gd_scene load_steps=9 format=3 uid="uid://bfc8gk0peifx1"]
 
 [ext_resource type="PackedScene" uid="uid://pwlw0a1jee75" path="res://scenes/player.tscn" id="1_4tvk2"]
 [ext_resource type="PackedScene" uid="uid://bj0nupe3jxs1t" path="res://scenes/battery_pickup.tscn" id="2_jf8rc"]
 [ext_resource type="PackedScene" uid="uid://fc57vmpwvxq3" path="res://scenes/key_pickup.tscn" id="3_y7r4q"]
+[ext_resource type="PackedScene" uid="uid://b5ur1bfbyt8rt" path="res://scenes/door.tscn" id="4_8lpiy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr1wn"]
 albedo_color = Color(0.215686, 0.215686, 0.215686, 1)
@@ -51,6 +52,7 @@ material = SubResource("StandardMaterial3D_pr1wn")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
+visible = false
 use_collision = true
 size = Vector3(30, 1, 30)
 material = SubResource("StandardMaterial3D_pr1wn")
@@ -78,3 +80,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1421, 2.5, -5.7975)
 
 [node name="Key_Pickup3" parent="." instance=ExtResource("3_y7r4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4791, 2.5, -9.49508)
+
+[node name="Door" parent="." instance=ExtResource("4_8lpiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5723, 2.5, 0.901081)
