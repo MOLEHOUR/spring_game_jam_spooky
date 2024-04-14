@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var key_label = $"Camera3D/Flashlight/UI/key label"
 @onready var flashlight_area = $"Camera3D/Flashlight/Flashlight Area"
 @onready var prompt_label = $"Camera3D/Flashlight/UI/prompt label"
+@onready var pause_menu = $"Pause Menu"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -22,6 +23,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	update_key_ui()
 	prompt_label.text = " "
+	pause_menu.hide()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -29,21 +31,21 @@ func _physics_process(delta):
 
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(0, 0, input_dir.y)).normalized()
-	if direction:
+	if direction  && !is_paused:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") && !is_paused:
 		rotation.y += 4.0 * delta
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") && !is_paused:
 		rotation.y -= 4.0 * delta
 
 	move_and_slide()
 	
-	if raycast.is_colliding():
+	if raycast.is_colliding() && !is_paused:
 		if raycast.get_collider() == null:
 			pass
 		else:
@@ -58,15 +60,19 @@ func _physics_process(delta):
 		prompt_label.text = " "
 
 func _input(event: InputEvent):
+	#Handle pausing
 	if Input.is_action_just_pressed("pause"):
 		if is_paused:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			unpause()
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		is_paused = !is_paused
-	if Input.is_action_just_pressed("flashlight"):
+			pause_menu.show()
+			pause_menu.focus()
+			is_paused = true
+
+	if Input.is_action_just_pressed("flashlight") && !is_paused:
 		flashlight.toggle_flashlight()
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") && !is_paused:
 		if raycast.is_colliding():
 			if raycast.get_collider().is_in_group("Item"):
 				var item = raycast.get_collider()
@@ -82,12 +88,11 @@ func _input(event: InputEvent):
 					door.unlock()
 				else:
 					print("need more keys!")
-	
-	#For debugging
-	if event is InputEventKey:
-		if event.pressed && event.keycode == KEY_R:
-			flashlight.change_power(10.0)
 
+func unpause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pause_menu.hide()
+	is_paused = false
 
 func update_key_ui():
 	key_label.text = " Keys: " + str(key_count)
