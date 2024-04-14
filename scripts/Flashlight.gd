@@ -7,7 +7,7 @@ extends Node3D
 var on: bool = true
 var has_power: bool = true
 var default_light_energy: float = 10.0
-var max_power: float = 500.0
+var max_power: float = 100.0
 
 func _ready():
 	timer.set_wait_time(max_power)
