@@ -1,0 +1,12 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://cdlqpkwdo5aou"]
+
+[sub_resource type="Sky" id="Sky_nilf4"]
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.33
+sky = SubResource("Sky_nilf4")
+ambient_light_energy = 1.17
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 1.34

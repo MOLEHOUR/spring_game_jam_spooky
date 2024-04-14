@@ -10,7 +10,7 @@ func _on_restart_button_down():
 
 func _on_quit_button_down():
 	#Go to main menu
-	get_tree().change_scene_to_file("res://scenes/cole_test_scene.tscn") #repalce with main menu
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn") #repalce with main menu
 
 func focus():
 	restart.grab_focus()
