@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://jrwioul5wtnt"]
+[gd_scene load_steps=11 format=3 uid="uid://jrwioul5wtnt"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_htd2s"]
 [ext_resource type="MeshLibrary" uid="uid://coyuqp5wodfpt" path="res://backrooms_tileset.tres" id="1_rtv77"]
-[ext_resource type="Environment" uid="uid://cdlqpkwdo5aou" path="res://scenes/dark.tres" id="2_2hkq8"]
-[ext_resource type="PackedScene" uid="uid://cxmag8kpcuopg" path="res://scenes/player.tscn" id="2_3aaoj"]
+[ext_resource type="Environment" path="res://scenes/dark.tres" id="2_2hkq8"]
+[ext_resource type="PackedScene" uid="uid://pwlw0a1jee75" path="res://scenes/player.tscn" id="2_3aaoj"]
 [ext_resource type="PackedScene" uid="uid://cr0bewfktrt8g" path="res://scenes/enemy.tscn" id="3_m00a1"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="5_vgwl8"]
-[ext_resource type="PackedScene" path="res://scenes/battery_pickup.tscn" id="6_vk7cp"]
-[ext_resource type="Script" path="res://scripts/light_switch.gd" id="6_wvx8w"]
-[ext_resource type="PackedScene" path="res://scenes/key_pickup.tscn" id="7_vpjjj"]
+[ext_resource type="PackedScene" uid="uid://b5ur1bfbyt8rt" path="res://scenes/door.tscn" id="5_vgwl8"]
+[ext_resource type="PackedScene" uid="uid://bj0nupe3jxs1t" path="res://scenes/battery_pickup.tscn" id="6_vk7cp"]
+[ext_resource type="PackedScene" uid="uid://fc57vmpwvxq3" path="res://scenes/key_pickup.tscn" id="7_vpjjj"]
 [ext_resource type="AudioStream" uid="uid://dy3j42e565mwi" path="res://Where_Am_I.mp3" id="8_1a1lc"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vn388"]
@@ -54,11 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -9)
 
 [node name="nest" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 4)
-
-[node name="switchTest" parent="." instance=ExtResource("5_vgwl8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -5)
-script = ExtResource("6_wvx8w")
-keys_required = 0
 
 [node name="Door" parent="." instance=ExtResource("5_vgwl8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9878, 1.5, 21)
