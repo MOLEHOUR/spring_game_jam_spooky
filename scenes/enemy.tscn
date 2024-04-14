@@ -1,38 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr0bewfktrt8g"]
+[gd_scene load_steps=4 format=3 uid="uid://cr0bewfktrt8g"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5lwom"]
-[ext_resource type="Shader" path="res://scenes/psx_shader.gdshader" id="2_3lu06"]
-[ext_resource type="Texture2D" uid="uid://qq13r81ydjbj" path="res://garji.png" id="3_i8n2a"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ad8hi"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1nnw"]
-render_priority = 0
-shader = ExtResource("2_3lu06")
-shader_parameter/affine_mapping = false
-shader_parameter/alpha_scissor = 0.5
-shader_parameter/jitter = 0.25
-shader_parameter/resolution = Vector2i(320, 240)
+[ext_resource type="Texture2D" uid="uid://2yw0m7o3mo7n" path="res://TheBoiledOne.webp" id="2_fcpju"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tnkil"]
 
 [node name="enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_5lwom")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_ad8hi")
-surface_material_override/0 = SubResource("ShaderMaterial_e1nnw")
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 1.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0)
+transform = Transform3D(0.46, 0, 0, 0, 0.46, 0, 0, 0, 0.46, 0, 1.05699, 0)
 gi_mode = 2
 billboard = 1
-texture = ExtResource("3_i8n2a")
+shaded = true
+texture = ExtResource("2_fcpju")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0143353, 1, 0)
