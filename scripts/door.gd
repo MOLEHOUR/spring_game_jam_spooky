@@ -4,4 +4,4 @@ extends StaticBody3D
 
 func unlock():
 	#Load final scene
-	get_tree().change_scene_to_file("res://scenes/win.tscn")
+	get_tree().change_scene_to_file("res://scenes/final_room.tscn")

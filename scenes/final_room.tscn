@@ -1,0 +1,238 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5j1hvnt7s8hs"]
+
+[ext_resource type="Environment" path="res://scenes/dark.tres" id="1_5v5qo"]
+[ext_resource type="MeshLibrary" uid="uid://coyuqp5wodfpt" path="res://backrooms_tileset.tres" id="1_hhv4s"]
+[ext_resource type="PackedScene" uid="uid://pwlw0a1jee75" path="res://scenes/player.tscn" id="3_2gsy0"]
+[ext_resource type="Texture2D" uid="uid://2yw0m7o3mo7n" path="res://TheBoiledOne.webp" id="4_3aykx"]
+[ext_resource type="Texture2D" uid="uid://de508gho27alf" path="res://light_switch.png" id="4_gjdff"]
+[ext_resource type="Script" path="res://scripts/light_switch.gd" id="5_k4rjq"]
+[ext_resource type="Texture2D" uid="uid://cay84poj65og3" path="res://chair_with_clothes.png" id="7_kslr0"]
+[ext_resource type="Script" path="res://scripts/EndDoor.gd" id="8_4ee88"]
+[ext_resource type="Texture2D" uid="uid://b0p816vt7ujr2" path="res://door2.png" id="8_8eyw7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pviem"]
+size = Vector3(1.5, 5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frpr3"]
+size = Vector3(1, 4, 2)
+
+[node name="Final Room" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_5v5qo")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_hhv4s")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65530, 65531, 1441794, 65530, 65532, 1441794, 65530, 65533, 1441794, 65530, 65534, 1441794, 65530, 65535, 1441794, 65530, 0, 1441794, 65530, 1, 1441794, 65530, 2, 1441794, 65530, 3, 1441794, 65530, 4, 1441794, 65530, 5, 1441794, 65530, 6, 1441794, 65531, 65531, 1441794, 65531, 65532, 1441794, 65531, 65533, 1441794, 65531, 65534, 1441794, 65531, 65535, 1441794, 65531, 0, 1441794, 65531, 1, 1441794, 65531, 2, 1441794, 65531, 3, 1441794, 65531, 4, 1441794, 65531, 5, 1441794, 65531, 6, 1441794, 65532, 65531, 1441794, 65532, 65532, 1441794, 65532, 65533, 1441794, 65532, 65534, 1441794, 65532, 65535, 1441794, 65532, 0, 1441794, 65532, 1, 1441794, 65532, 2, 1441794, 65532, 3, 1441794, 65532, 4, 1441794, 65532, 5, 1441794, 65532, 6, 1441794, 65533, 65531, 1441794, 65533, 65532, 1441794, 65533, 65533, 1441794, 65533, 65534, 1441794, 65533, 65535, 1441794, 65533, 0, 1441794, 65533, 1, 1441794, 65533, 2, 1441794, 65533, 3, 1441794, 65533, 4, 1441794, 65533, 5, 1441794, 65533, 6, 1441794, 65534, 65531, 1441794, 65534, 65532, 1441794, 65534, 65533, 1441794, 65534, 65534, 1441794, 65534, 65535, 1441794, 65534, 0, 1441794, 65534, 1, 1441794, 65534, 2, 1441794, 65534, 3, 1441794, 65534, 4, 1441794, 65534, 5, 1441794, 65534, 6, 1441794, 65535, 65531, 1441794, 65535, 65532, 1441794, 65535, 65533, 1441794, 65535, 65534, 1441794, 65535, 65535, 1441794, 65535, 0, 1441794, 65535, 1, 1441794, 65535, 2, 1441794, 65535, 3, 1441794, 65535, 4, 1441794, 65535, 5, 1441794, 65535, 6, 1441794, 0, 65531, 1441794, 0, 65532, 1441794, 0, 65533, 1441794, 0, 65534, 1441794, 0, 65535, 1441794, 0, 0, 1441794, 0, 1, 1441794, 0, 2, 1441794, 0, 3, 1441794, 0, 4, 1441794, 0, 5, 1441794, 0, 6, 1441794, 1, 65531, 1441794, 1, 65532, 1441794, 1, 65533, 1441794, 1, 65534, 1441794, 1, 65535, 1441794, 1, 0, 1441794, 1, 1, 1441794, 1, 2, 1441794, 1, 3, 1441794, 1, 4, 1441794, 1, 5, 1441794, 1, 6, 1441794, 2, 65531, 1441794, 2, 65532, 1441794, 2, 65533, 1441794, 2, 65534, 1441794, 2, 65535, 1441794, 2, 0, 1441794, 2, 1, 1441794, 2, 2, 1441794, 2, 3, 1441794, 2, 4, 1441794, 2, 5, 1441794, 2, 6, 1441794, 3, 65531, 1441794, 3, 65532, 1441794, 3, 65533, 1441794, 3, 65534, 1441794, 3, 65535, 1441794, 3, 0, 1441794, 3, 1, 1441794, 3, 2, 1441794, 3, 3, 1441794, 3, 4, 1441794, 3, 5, 1441794, 3, 6, 1441794, 4, 65531, 1441794, 4, 65532, 1441794, 4, 65533, 1441794, 4, 65534, 1441794, 4, 65535, 1441794, 4, 0, 1441794, 4, 1, 1441794, 4, 2, 1441794, 4, 3, 1441794, 4, 4, 1441794, 4, 5, 1441794, 4, 6, 1441794, 5, 65531, 1441794, 5, 65532, 1441794, 5, 65533, 1441794, 5, 65534, 1441794, 5, 65535, 1441794, 5, 0, 1441794, 5, 1, 1441794, 5, 2, 1441794, 5, 3, 1441794, 5, 4, 1441794, 5, 5, 1441794, 5, 6, 1441794, 65529, 7, 655361, 65529, 65530, 1048577, 6, 65530, 1, 6, 7, 1441793, 65530, 7, 655360, 65531, 7, 655360, 65532, 7, 655360, 65533, 7, 655360, 65534, 7, 655360, 65535, 7, 655360, 0, 7, 655360, 1, 7, 655360, 2, 7, 655360, 3, 7, 655360, 4, 7, 655360, 5, 7, 655360, 65529, 65531, 1048576, 65529, 65532, 1048576, 65529, 65533, 1048576, 65529, 65534, 1048576, 65529, 65535, 1048576, 65529, 0, 1048576, 65529, 1, 1048576, 65529, 2, 1048576, 65529, 3, 1048576, 65529, 4, 1048576, 65529, 5, 1048576, 65529, 6, 1048576, 65530, 65530, 0, 65531, 65530, 0, 65532, 65530, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 5, 65530, 0, 6, 65531, 1441792, 6, 65532, 1441792, 6, 65533, 1441792, 6, 65534, 1441792, 6, 65535, 1441792, 6, 0, 1441792, 6, 1, 1441792, 6, 2, 1441792, 6, 3, 1441792, 6, 4, 1441792, 6, 5, 1441792, 6, 6, 1441792)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_2gsy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430211, 1, 6.83821)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, 1.77636e-15, -4.37114e-08, -6.5, 3, 0)
+
+[node name="Area3D" type="Area3D" parent="." groups=["Lightswitch"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.4, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_k4rjq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_pviem")
+
+[node name="Lightswitch" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.0999999, 0.1, 0)
+texture = ExtResource("4_gjdff")
+
+[node name="Monster" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6, 1, -5)
+billboard = 1
+texture = ExtResource("4_3aykx")
+
+[node name="chair" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 6, 1, -5)
+visible = false
+billboard = 1
+texture = ExtResource("7_kslr0")
+
+[node name="Lights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 10.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 0, 0)
+light_energy = 10.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 0, 0)
+light_energy = 10.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 0, 0)
+light_energy = 10.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 0, 0)
+light_energy = 10.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 3)
+light_energy = 10.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 0, 3)
+light_energy = 10.0
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 0, 3)
+light_energy = 10.0
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 0, 3)
+light_energy = 10.0
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 0, 3)
+light_energy = 10.0
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 6)
+light_energy = 10.0
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 0, 6)
+light_energy = 10.0
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 0, 6)
+light_energy = 10.0
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 0, 6)
+light_energy = 10.0
+
+[node name="SpotLight3D15" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 0, 6)
+light_energy = 10.0
+
+[node name="SpotLight3D16" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -3)
+light_energy = 10.0
+
+[node name="SpotLight3D17" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 0, -3)
+light_energy = 10.0
+
+[node name="SpotLight3D18" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 0, -3)
+light_energy = 10.0
+
+[node name="SpotLight3D19" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 0, -3)
+light_energy = 10.0
+
+[node name="SpotLight3D20" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 0, -3)
+light_energy = 10.0
+
+[node name="SpotLight3D21" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.5, 3.78552e-08, -0.866025, 0.866025, -2.18557e-08, 0.5, 0, -1, -4.37114e-08, 6, 0, -3)
+light_energy = 10.0
+spot_range = 4.61475
+spot_angle = 89.99
+
+[node name="SpotLight3D22" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.5, 3.78552e-08, -0.866025, 0.866025, -2.18557e-08, 0.5, 0, -1, -4.37114e-08, 6, 0, 2)
+light_energy = 10.0
+spot_range = 4.61475
+spot_angle = 89.99
+
+[node name="SpotLight3D23" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.5, 3.78552e-08, -0.866025, 0.866025, -2.18557e-08, 0.5, 0, -1, -4.37114e-08, 6, 0, 5)
+light_energy = 10.0
+spot_range = 4.61475
+spot_angle = 89.99
+
+[node name="SpotLight3D24" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-8.09643e-08, 1, 1.89876e-07, 0.866025, -2.48211e-08, 0.5, 0.5, 2.0492e-07, -0.866025, 4, 0, 6)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D25" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-8.09643e-08, 1, 1.89876e-07, 0.866025, -2.48211e-08, 0.5, 0.5, 2.0492e-07, -0.866025, -1, 0, 6)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D26" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-8.09643e-08, 1, 1.89876e-07, 0.866025, -2.48211e-08, 0.5, 0.5, 2.0492e-07, -0.866025, -5, 0, 6)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D27" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.5, -2.48631e-07, 0.866025, 0.866025, -2.48211e-08, 0.5, -1.0282e-07, 1, 2.27732e-07, -5, 0, 6)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D28" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.5, -2.48631e-07, 0.866025, 0.866025, -2.48211e-08, 0.5, -1.0282e-07, 1, 2.27732e-07, -5, 0, 2)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D29" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.5, -2.48631e-07, 0.866025, 0.866025, -2.48211e-08, 0.5, -1.0282e-07, 1, 2.27732e-07, -5, 0, -2)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D30" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.5, -2.48631e-07, 0.866025, 0.866025, -2.48211e-08, 0.5, -1.0282e-07, 1, 2.27732e-07, -5, 0, -4)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D31" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.25, -0.866026, 0.433013, 0.866025, -2.48211e-08, 0.5, -0.433013, 0.5, 0.75, -3, 0, -4)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D32" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.25, -0.866026, 0.433013, 0.866025, -2.48211e-08, 0.5, -0.433013, 0.5, 0.75, 1, 0, -4)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="SpotLight3D33" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.25, -0.866026, 0.433013, 0.866025, -2.48211e-08, 0.5, -0.433013, 0.5, 0.75, 5, 0, -4)
+light_energy = 10.0
+spot_range = 4.44666
+spot_angle = 89.99
+
+[node name="EndDoor" type="Area3D" parent="." groups=["Door2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("8_4ee88")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_frpr3")
+
+[node name="Sprite3D" type="Sprite3D" parent="EndDoor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0740361, 1.5, 0)
+texture = ExtResource("8_8eyw7")

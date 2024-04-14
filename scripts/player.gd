@@ -56,6 +56,10 @@ func _physics_process(delta):
 					prompt_label.text = "[center]Not enough keys![/center]"
 				else:
 					prompt_label.text = "[center]Press [E] to enter[/center]"
+			elif raycast.get_collider().is_in_group("Lightswitch"):
+				prompt_label.text = "[center]Press [E] to turn on the lights[/center]"
+			elif raycast.get_collider().is_in_group("Door2"):
+				prompt_label.text = "[center]Press [E] to leave[/center]"
 	else:
 		prompt_label.text = " "
 
@@ -88,6 +92,10 @@ func _input(event: InputEvent):
 					door.unlock()
 				else:
 					print("need more keys!")
+			elif raycast.get_collider().is_in_group("Lightswitch"):
+				raycast.get_collider().unlock()
+			elif raycast.get_collider().is_in_group("Door2"):
+				raycast.get_collider().end()
 
 func unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -1,9 +1,16 @@
-extends StaticBody3D
+extends Area3D
 
-@export var keys_required: int = 0
-@onready var directional_light_3d = $"../DirectionalLight3D"
-@onready var enemy = $"../enemy"
+@onready var lights = $"../Lights"
+@onready var enemy = $"../Monster"
+@onready var chair = $"../chair"
+@onready var door = $"../EndDoor"
+
+var on = false
 
 func unlock():
-	directional_light_3d.visible = true
-	enemy.queue_free()
+	if !on:
+		lights.visible = true
+		chair.visible = true
+		door.visible = true
+		enemy.queue_free()
+		on = true
