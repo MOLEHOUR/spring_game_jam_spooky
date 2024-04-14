@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5j1hvnt7s8hs"]
+[gd_scene load_steps=13 format=3 uid="uid://c5j1hvnt7s8hs"]
 
 [ext_resource type="Environment" path="res://scenes/dark.tres" id="1_5v5qo"]
 [ext_resource type="MeshLibrary" uid="uid://coyuqp5wodfpt" path="res://backrooms_tileset.tres" id="1_hhv4s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cay84poj65og3" path="res://chair_with_clothes.png" id="7_kslr0"]
 [ext_resource type="Script" path="res://scripts/EndDoor.gd" id="8_4ee88"]
 [ext_resource type="Texture2D" uid="uid://b0p816vt7ujr2" path="res://door2.png" id="8_8eyw7"]
+[ext_resource type="AudioStream" uid="uid://dy3j42e565mwi" path="res://Where_Am_I.mp3" id="10_dicma"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pviem"]
 size = Vector3(1.5, 5, 1.5)
@@ -236,3 +237,7 @@ shape = SubResource("BoxShape3D_frpr3")
 [node name="Sprite3D" type="Sprite3D" parent="EndDoor"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0740361, 1.5, 0)
 texture = ExtResource("8_8eyw7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_dicma")
+autoplay = true
